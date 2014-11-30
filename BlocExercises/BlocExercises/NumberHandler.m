@@ -19,8 +19,21 @@
 
 - (NSArray *) arrayOfNumbersBetweenNumber:(NSInteger)number andOtherNumber: (NSInteger)otherNumber {
     NSMutableArray *numberArray = [NSMutableArray new];
-    for (; number <= otherNumber; number++) {
-        NSNumber *num = [NSNumber numberWithInteger:number];
+    NSInteger number1 = 0;
+    NSInteger number2 = 0;
+
+    BOOL isNumberGreatThanOtherNumber = (number >= otherNumber);
+    if (isNumberGreatThanOtherNumber) {
+        number2 = number;
+        number1 = otherNumber;
+        
+    }else{
+        number1 = number;
+        number2 = otherNumber;
+    }
+    
+        for (;number1 < number2+1;number1++) {
+        NSNumber *num = [NSNumber numberWithInteger:number1];
         [numberArray addObject:num];
     }
     return numberArray;

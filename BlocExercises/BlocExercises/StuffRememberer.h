@@ -10,6 +10,8 @@
 
 @interface StuffRememberer : NSObject
 
+
+ @property (nonatomic, strong) NSMutableArray *iRememberNow;
 /*
  
  In this class, there are three pairs of methods.
