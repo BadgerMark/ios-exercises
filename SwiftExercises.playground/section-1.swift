@@ -7,13 +7,14 @@ Strings
 */
 
 func favoriteCheeseStringWithCheese(cheese: String) -> String {
-    // WORK HERE
+    var cheese = "My favorite cheese is " + cheese + "."
     return cheese
 }
 
 let fullSentence = favoriteCheeseStringWithCheese("cheddar")
-// Make fullSentence say "My favorite cheese is cheddar."
 
+// Make fullSentence say "My favorite cheese is cheddar."
+println(fullSentence)
 /*
 
 Arrays & Dictionaries
@@ -22,11 +23,22 @@ Arrays & Dictionaries
 
 let numberArray = [1, 2, 3, 4]
 // Add 5 to this array
-// WORK HERE
+var newArray = [5]
+newArray.splice(numberArray, atIndex: 0)
+for var i = 0; i < newArray.count; i++ {
+        println("how many?")
+    println(newArray[i])
+}
 
 let numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
 // Add 5 : "five" to this dictionary
-// WORK HERE
+var newDict = [Int: String]()
+newDict = numberDictionary
+newDict[5] = "five"
+newDict
+for (myInt, myString) in newDict {
+    println("the key \(myInt) value is \(myString).")
+}
 
 /*
 
@@ -35,10 +47,14 @@ Loops
 */
 
 // Use a closed range loop to print 1 - 10, inclusively
-// WORK HERE
+for i in 1...10 {
+    println(i)
+}
 
 // Use a half-closed range loop to print 1 - 10, inclusively
-// WORK HERE
+for i in 1..<10 {
+    println(i)
+}
 
 let worf = [
     "name": "Worf",
@@ -57,13 +73,27 @@ let characters = [worf, picard]
 
 func favoriteDrinksArrayForCharacters(characters:Array<Dictionary<String, String>>) -> Array<String> {
     // return an array of favorite drinks, like ["prune juice", "tea, Earl Grey, hot"]
-    // WORK HERE
-    return []
+    let numberOfTrek = characters.count
+    var drinksArray = [String]()
+    var dictionaryOfTrek  = [String : String]()
+    for var i = 0; i < numberOfTrek; i++ {
+        dictionaryOfTrek = characters[i]
+        for favoriteDrinks in dictionaryOfTrek {
+            var drinkie = dictionaryOfTrek["favorite drink"]
+            if(!contains(drinksArray, drinkie!)){
+                drinksArray.append(drinkie!)
+            }
+        }
+    }
+    for var j = 0; j<drinksArray.count; j++ {
+        println(drinksArray[j])
+    }
+    return drinksArray
 }
 
 let favoriteDrinks = favoriteDrinksArrayForCharacters(characters)
 
-favoriteDrinks
+//println(favoriteDrinks)
 
 /*
 
@@ -76,9 +106,23 @@ Functions
 let strings = ["milk", "eggs", "bread", "challah"]
 
 // WORK HERE - make your function and pass `strings` in
-
+var actualOutput = String()
+var semiColon = ";"
+func returnDelimitedString(foods:Array<String>) -> String {
+    for var i = 0; i < foods.count; i++ {
+        println(foods[i])
+        actualOutput += foods[i]
+        if(i < foods.count - 1){
+            actualOutput += semiColon
+        }
+    }
+    return actualOutput
+}
 let expectedOutput = "milk;eggs;bread;challah"
+returnDelimitedString(strings)
+println("Actual Output: \(actualOutput)")
 
+println(actualOutput == expectedOutput)
 /*
 
 Closures
@@ -88,4 +132,5 @@ Closures
 let cerealArray = ["Golden Grahams", "Cheerios", "Trix", "Cap'n Crunch OOPS! All Berries", "Cookie Crisp"]
 
 // Use a closure to sort this array alphabetically
-// WORK HERE
+let sortedCereals = sorted(cerealArray, <)
+println(sortedCereals)
